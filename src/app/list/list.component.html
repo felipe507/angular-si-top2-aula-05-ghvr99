@@ -1,0 +1,26 @@
+<h2>Lista de disciplinas:</h2>
+<hr/>
+Semestre: 
+<button *ngFor="let i of [1,2,3,4,5,6]" (click)="semestre=i">
+  <span *ngIf="semestre==i"><u>{{i}}</u></span>
+  <span *ngIf="semestre!=i">{{i}}</span>
+</button>
+<hr/>
+<table border="1">
+  <tr>
+    <th>Nome</th>
+    <th>Nota</th>
+  </tr>
+  <tr *ngFor="let disciplina of getDisciplinas()">
+    <td>
+      <a [routerLink]="['/list', disciplina.index]">
+        {{disciplina.nome}}
+      </a>
+    </td>
+    <td>{{disciplina.nota}}</td>
+  </tr>
+  <tr>
+    <th>Média</th>
+    <th>{{getAverage()}}</th>
+  </tr>
+</table>
